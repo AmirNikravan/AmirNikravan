@@ -1,4 +1,5 @@
 /*
+NOTE == this program uses c++ 14
 Developer : AmirHosein Nikravan
 Shomare dnaeshjooye : 39914141054085
 Class : seshanbe Saate 18:00
