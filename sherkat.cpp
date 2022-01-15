@@ -9,7 +9,7 @@ namespace core
         std::cout << "\n\n\tBE SYSTEM YEKPARCHE MODIRIAT KHOSH AMADID \n\n\n";
         std::cout << "*********lotfan bakhs mord nazar ra entekhab konid********* \n";
         std::cout << "1.BAKHSH MODIRAT KARMANDAN \n";
-        std::cout << "2.BAKSH MODIRAIT MALI\n";
+        std::cout << "2.BAKSH MODIRAIT MALI(not activated)\n";
         std::cout << "3.KHROOJ AZ SAMANE\n";
     }
     void menu_karmandan()
@@ -18,7 +18,7 @@ namespace core
         std::cout << "\n\n\tBAKHSH MODIRIAT KARBARAN\n\n\n";
         std::cout << "\t*********lotfan bakhs mord nazar ra entekhab konid********* \n";
         std::cout << "1.EZAFE KARDAN KARMDAN\n";
-        std::cout << "2.EKHRAJ KARMAND\n";
+        std::cout << "2.EKHRAJ KARMAND(not activated)\n";
         std::cout << "3.JOSTO JOO KARMAND BAR ASAS KOD MELLI\n";
         std::cout << "5.NAMYESH TAMAM KARMANDAN\n";
         std::cout << "6.BAZGASHT BE MENU GHABL\n";
@@ -52,6 +52,8 @@ namespace core
         int get_sen();
         void Daryaft_Etelat(); // daryaft etelat az karbar
         void Print_Etelaat();
+        void Ekhraj_karmand(std::vector<Karmand> &karmand);
+        void Search_karmand();
 
     protected:
         string m_name;
@@ -94,7 +96,8 @@ namespace core
     /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
     void Karmand::Daryaft_Etelat()
     {
-
+        system("cls");
+        std::cout << "\n\n\t DARYAFT ETELEAT KARMAND \n\n";
         std::cout << "----------------------------------------------\n\n";
         std::cout << "Nam karmand : ";
 
@@ -123,8 +126,6 @@ namespace core
     /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
     void Karmand::Print_Etelaat()
     {
-        system("cls");
-        std::cout << "\n\n\t NAMYESH ETELEAT KARMAND \n\n";
 
         std::cout << "----------------------------------------------\n\n";
         std::cout << "Nam karmand : ";
@@ -150,6 +151,12 @@ namespace core
     }
     /*||||||||||||||||||||||||||||||||||||||||||||||F|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
+    void Karmand::Ekhraj_karmand(std::vector<Karmand> &karmand)
+    {
+    }
+
+    /*||||||||||||||||||||||||||||||||||||||||||||||F|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
     /*******************************************************************************************************************************/
     class Pardakht : public Karmand // zir system pardakht hoghoogh
     {
@@ -159,6 +166,61 @@ namespace core
     class Barname
     {
     public:
+        void start_ser_karmand(std::vector<Karmand> &karmand)
+        {
+            system("cls");
+            std::cout << "\n\n\t JOST TO JO KARMAND \n\n";
+            if (!Tedad_Karbaran)
+            {
+                std::cout << "KARMANDI VOJOOD NADARAD \n";
+                system("pause");
+                return;
+            }
+            std::cout << "LOTFAN KOD MELLI KARMAND RA VARED KONID : ";
+            string kod;
+            std::getline(std::cin >> std::ws, kod);
+            system("cls");
+            std::cout << "\n\n\t JOST TO JO KARMAND \n\n";
+            std::cout << "\nSYSTEM DAR HAL JOSTOJOO AST LOTFAN SHAKIBA BASHID\n\n";
+            timer(25'000);
+            bool flag = false;
+            for (auto &i : karmand)
+            {
+                if (i.get_kode_melli() == kod)
+                {
+                here:
+                    system("cls");
+                    std::cout << "\n\n\t JOST TO JO KARMAND \n\n";
+                    std::cout << "KARMAND YAFT SHOD.\nAYA MAYEL BE NAMAYESH ETELAAT KARMAND HASTID?[y/n]";
+                    flag = true;
+                    char ch;
+                    std::cin >> ch;
+                    switch (ch)
+                    {
+                    case 'y':
+                    case 'Y':
+                        i.Print_Etelaat();
+                        system("pause");
+                        break;
+                    case 'n':
+                    case 'N':
+                        return;
+                    default:
+                        std::cout << "lotfan gozine monaseb ra vared konid\n";
+                        system("pause");
+                        goto here;
+                        break;
+                    }
+                }
+            }
+            if (!flag)
+            {
+                system("cls");
+                std::cout << "\n\n\t JOST TO JO KARMAND \n\n";
+                std::cout << "\nKARMAND YAFT NASHOD.\n\n";
+                system("pause");
+            }
+        }
         void strat_rec_info(std::vector<Karmand> &karmand)
         {
             Pardakht p;
@@ -168,10 +230,11 @@ namespace core
         void start_show_personal_info(std::vector<Karmand> &karmand)
         {
             system("cls");
-            std::cout << "\n\n\t DARYAFT ETELEAT KARMAND \n\n";
+            std::cout << "\n\n\t NAMYESH ETELEAT KARMAND \n\n";
+
             if (!Tedad_Karbaran)
             {
-                std::cout << "KARBARI VOJOOD NADARAD \n";
+                std::cout << "KARMANDI VOJOOD NADARAD \n";
                 system("pause");
                 return;
             }
@@ -204,6 +267,9 @@ namespace core
                 case 1:
                     first.strat_rec_info(karmand);
                     goto ebteda_karmand;
+                case 3:
+                    first.start_ser_karmand(karmand);
+                    goto ebteda_karmand;
                 case 5:
                     first.start_show_personal_info(karmand);
                     goto ebteda_karmand;
@@ -218,6 +284,8 @@ namespace core
                 break;
             case 2:
                 first.start_show_personal_info(karmand);
+            case 3:
+                return;
             default:
                 break;
             }
@@ -229,4 +297,10 @@ namespace core
 int main()
 {
     core::start();
+    system("cls");
+    std::cout << "\n\n\t SYSTEM YEKPARCHE MODIRIAT \n\n\n";
+    std::cout << "KHAREJ SHODID \n\n";
+    std::cout << "----------------------------------------------\n\n";
+    std::cout << "DEVELOPER : Amir Hossein Nikravan\n";
+    std::cout << "----------------------------------------------\n\n";
 }
