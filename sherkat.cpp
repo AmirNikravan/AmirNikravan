@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
 namespace core
 {
+    void exit();
     void menu_asli()
     {
         system("cls");
@@ -22,6 +24,16 @@ namespace core
         std::cout << "3.JOSTO JOO KARMAND BAR ASAS KOD MELLI\n";
         std::cout << "5.NAMYESH TAMAM KARMANDAN\n";
         std::cout << "6.BAZGASHT BE MENU GHABL\n";
+    }
+    void exit()
+    {
+        system("cls");
+        std::cout << "\n\n\t SYSTEM YEKPARCHE MODIRIAT \n\n\n";
+        std::cout << "KHAREJ SHODID \n\n";
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "DEVELOPER : Amir Hossein Nikravan\n";
+        std::cout << "----------------------------------------------\n\n";
+        std::exit(0);
     }
     void timer(int x) // ignore it :)))
     {
@@ -285,9 +297,11 @@ namespace core
             case 2:
                 first.start_show_personal_info(karmand);
             case 3:
-                return;
+                exit();
             default:
-                break;
+            std::cout<<"LOTFAN GOZINE SAHIH RA ENTEKHAB KONID";
+            system("pause");
+            goto here;
             }
         } while (true);
     }
@@ -297,10 +311,4 @@ namespace core
 int main()
 {
     core::start();
-    system("cls");
-    std::cout << "\n\n\t SYSTEM YEKPARCHE MODIRIAT \n\n\n";
-    std::cout << "KHAREJ SHODID \n\n";
-    std::cout << "----------------------------------------------\n\n";
-    std::cout << "DEVELOPER : Amir Hossein Nikravan\n";
-    std::cout << "----------------------------------------------\n\n";
 }
