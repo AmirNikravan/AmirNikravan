@@ -20,10 +20,20 @@ namespace core
         std::cout << "\n\n\tBAKHSH MODIRIAT KARBARAN\n\n\n";
         std::cout << "\t*********lotfan bakhs mord nazar ra entekhab konid********* \n";
         std::cout << "1.EZAFE KARDAN KARMDAN\n";
-        std::cout << "2.EKHRAJ KARMAND(not activated)\n";
-        std::cout << "3.JOSTO JOO KARMAND BAR ASAS KOD MELLI\n";
-        std::cout << "5.NAMYESH TAMAM KARMANDAN\n";
-        std::cout << "6.BAZGASHT BE MENU GHABL\n";
+        std::cout << "2.JOSTO JOO KARMAND BAR ASAS KOD MELLI\n";
+        std::cout << "3.NAMYESH TAMAM KARMANDAN\n";
+        std::cout << "4.BAZGASHT BE MENU GHABL\n";
+    }
+    void menu_mali()
+    {
+        system("cls");
+        std::cout << "\n\n\tBAKHSH MODIRIAT MALI\n\n\n";
+        std::cout << "\t*********lotfan bakhs mord nazar ra entekhab konid********* \n";
+        std::cout << "1.MODIRIAT HOGHOOGH KARMDAN\n";
+        std::cout << "2.EZAFE KARDAN HAZINE HAYE PARDAKHTI\n";
+        std::cout << "3.EZAFE KARDAN DARAMAD SHERKAT\n";
+        std::cout << "4.NAMAYESH LIST HESABRESI SHERKAT\n";
+        std::cout << "5.BAZGASHT BE MENU GHABL\n";
     }
     void exit()
     {
@@ -73,7 +83,7 @@ namespace core
         int m_sen;
         string m_kode_melli;
         string m_semat;
-        lli m_hoghhogh;
+        lli m_hoghhogh{0};
     };
     /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
     string Karmand::get_name()
@@ -110,7 +120,7 @@ namespace core
     {
         system("cls");
         std::cout << "\n\n\t DARYAFT ETELEAT KARMAND \n\n";
-        std::cout << "----------------------------------------------\n\n";
+        std::cout << "----------------------------------------------\n|\n";
         std::cout << "Nam karmand : ";
 
         std::getline(std::cin >> std::ws, this->m_name);
@@ -142,7 +152,6 @@ namespace core
         std::cout << "----------------------------------------------\n\n";
         std::cout << "Nam karmand : ";
         std::cout << this->get_name() << '\n';
-
         std::cout << "----------------------------------------------\n\n";
         std::cout << "Family karmand : ";
         std::cout << this->get_family() << '\n';
@@ -161,19 +170,61 @@ namespace core
 
         std::cout << "----------------------------------------------\n\n";
     }
-    /*||||||||||||||||||||||||||||||||||||||||||||||F|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-
-    void Karmand::Ekhraj_karmand(std::vector<Karmand> &karmand)
-    {
-    }
-
-    /*||||||||||||||||||||||||||||||||||||||||||||||F|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
     /*******************************************************************************************************************************/
     class Pardakht : public Karmand // zir system pardakht hoghoogh
     {
+    protected:
+        lli in{0};
+        lli out{0};
+
     public:
+        void AddSalary(Karmand &);
     };
+    void Pardakht::AddSalary(Karmand &karmand)
+    {
+        system("cls");
+        std::cout << "\n\n\t MODIRIAT HOGHOOGH KARMAND \n\n\n";
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "Nam karmand : ";
+        std::cout << karmand.get_name() << '\n';
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "Family karmand : ";
+        std::cout << karmand.get_family() << '\n';
+
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "Kod Melli karmand : ";
+        std::cout << karmand.get_family() << '\n';
+
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "Sen karmand : ";
+        std::cout << karmand.get_sen() << '\n';
+
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "Semat karmand : ";
+        std::cout << karmand.get_semat() << '\n';
+
+        std::cout << "----------------------------------------------\n\n";
+        std::cout << "DAR IN BAKHSH HOMA MITAVANID KAR HAYE ZIR RA \nBARAYE HAR KARMAD ANJAM DAHID : \n";
+        std::cout << "1.EZAFE KARDAN HOGHHOGH SABET. \n";
+        std::cout << "2.EZAFE KARDAN HAGH MAMOORIAT.\n";
+        std::cout << "3.EZAFE KARDAN PADASH.\n";
+        std::cout << "4.EZAFE KARDAN HAGH SEMAT\n";
+        std::cout << "5.KAHESH HOGHHOGH\n";
+        std::cout << "LOTFAN GOZINE MORD NAZAR KHOD RA ENTEKHAB KONID\n";
+        int n;
+        std::cin >> n;
+        switch (n)
+        {
+        case /* constant-expression */:
+            /* code */
+            break;
+
+        default:
+            break;
+        }
+    }
     /*******************************************************************************************************************************/
     class Barname
     {
@@ -233,12 +284,16 @@ namespace core
                 system("pause");
             }
         }
+        /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
         void strat_rec_info(std::vector<Karmand> &karmand)
         {
             Pardakht p;
             p.Daryaft_Etelat();
             karmand.push_back(p);
         }
+        /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
         void start_show_personal_info(std::vector<Karmand> &karmand)
         {
             system("cls");
@@ -256,52 +311,126 @@ namespace core
             }
             system("pause");
         }
+
+        /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+        void start_add_salary(std::vector<Karmand> &karmand, Pardakht &Pardakht)
+        {
+            system("cls");
+            std::cout << "\n\n\t MODIRIAT HOGHOOGH KARMAND \n\n";
+
+            if (!Tedad_Karbaran)
+            {
+                std::cout << "KARMANDI VOJOOD NADARAD \n";
+                system("pause");
+                return;
+            }
+            for (auto i : karmand)
+            {
+                Pardakht.AddSalary(i);
+            }
+        }
+
+        /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
     };
     /*********************************************************************************************************************************/
     void start()
     {
-        int gozine_asli, gozine_karmandan;
+        int gozine_asli, gozine_karmandan, gozine_mali;
+
         std::vector<core::Karmand> karmand;
+        core::Pardakht pardakht;
         Barname first;
+
         do
+
         {
+
         here:
+
             menu_asli();
+
             std::cin >> gozine_asli;
+
             switch (gozine_asli)
+
             {
+
             case 1: // MODIRAT karmandan
+
             ebteda_karmand:
+
                 menu_karmandan();
+
                 std::cin >> gozine_karmandan;
-                switch (gozine_karmandan)
+
+                switch (gozine_karmandan) // start modriat karmand
+
                 {
                 case 1:
+
                     first.strat_rec_info(karmand);
+
                     goto ebteda_karmand;
-                case 3:
+
+                case 2:
+
                     first.start_ser_karmand(karmand);
+
                     goto ebteda_karmand;
-                case 5:
+
+                case 3:
+
                     first.start_show_personal_info(karmand);
+
                     goto ebteda_karmand;
-                case 6:
+
+                case 4:
+
                     goto here;
+
                 default:
+
                     std::cout << "lotfan gozine monaseb ra vared konid\n";
+
                     system("pause");
+
                     goto ebteda_karmand;
-                }
-                first.strat_rec_info(karmand);
+                } // payan modirait karmand
+
                 break;
-            case 2:
-                first.start_show_personal_info(karmand);
+
+            case 2: // start modiriat mali
+
+            ebteda_mali:
+
+                menu_mali();
+
+                std::cin >> gozine_mali;
+
+                switch (gozine_mali)
+                {
+                case 1:
+                    first.start_add_salary(karmand, pardakht);
+                    break;
+
+                default:
+                    break;
+                }
+                // payan mali
             case 3:
+
                 exit();
+
+                break;
+
             default:
-            std::cout<<"LOTFAN GOZINE SAHIH RA ENTEKHAB KONID";
-            system("pause");
-            goto here;
+
+                std::cout << "LOTFAN GOZINE SAHIH RA ENTEKHAB KONID";
+
+                system("pause");
+
+                goto here;
             }
         } while (true);
     }
@@ -311,4 +440,5 @@ namespace core
 int main()
 {
     core::start();
+    return 0;
 }
