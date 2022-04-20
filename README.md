@@ -2,7 +2,9 @@
 - 👀 I’m interested in c++,html,css,php
 - 🌱 I’m currently learning c++
 - 💞️ I’m looking to collaborate on NULL
-- 📫 How to reach me amirnikravan@outlook.com
+- 📫 How to reach me
+ Email : amirnikravan@outlook.com
+ Telegram : t.me/thisisamirhossein
 
 <!---
 AmirNikravan/AmirNikravan is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
